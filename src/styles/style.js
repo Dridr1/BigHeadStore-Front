@@ -7,7 +7,6 @@ const GlobalStyle = createGlobalStyle`
                 }
                 body{
                         background-color: #FFFFFF;
-                        min-height: 100vh;
                 }
                 margin: 0;
                 padding: 0;
@@ -17,15 +16,16 @@ const GlobalStyle = createGlobalStyle`
                 vertical-align: baseline;
                 font-family: 'Ubuntu', sans-serif;
                 box-sizing: border-box;
-                overflow: scroll;
-               ::-webkit-scrollbar {
+                ::-webkit-scrollbar {
                         width: 8px;
                         }
                 ::-webkit-scrollbar-track { 
 	                background: none; 
+                        border-radius: 5px;
                         }
                 ::-webkit-scrollbar-thumb {
                         background: #d8d8d8; 
+                        border-radius: 5px;
                         }
                 ::-webkit-scrollbar-thumb:hover {
                         background: #c4c4c4; 
