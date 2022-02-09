@@ -1,10 +1,12 @@
 import React from 'react';
-import { } from './style'
+import { Container } from './style'
 
 function Cart() {
   return (
     <>
-      
+      <Container>
+        
+      </Container>
     </>
   );
 }

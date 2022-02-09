@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
                 font-size: 100%;
                 font-weight: normal;
                 vertical-align: baseline;
-                font-family: 'Raleway', sans-serif;;
+                font-family: 'Ubuntu', sans-serif;
                 box-sizing: border-box;
                 overflow: scroll;
                ::-webkit-scrollbar {
