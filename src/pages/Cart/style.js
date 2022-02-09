@@ -1,16 +1,5 @@
 import styled from "styled-components";
 
-const Header = styled.div`
-  width: 100vw;
-  height: 60px;
-  background-color: #EB4629;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-`;
-
 const Back = styled.img`
   width: 25px;
   height: 20px;
@@ -111,4 +100,4 @@ const Button = styled.button`
   }
 `;
 
-export { Container, Header, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button};
+export { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button};

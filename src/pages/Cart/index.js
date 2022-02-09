@@ -1,5 +1,5 @@
 
-import { Container, Header, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button } from './style.js'
+import { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button } from './style.js'
 import Arrow from '../../assets/back.png'
 import { useNavigate } from 'react-router-dom';
 
@@ -7,9 +7,7 @@ function Cart() {
   const navigate = useNavigate();
   return (
     <>
-      <Header>
-        <Back src={Arrow}></Back>
-      </Header>
+      <Back src={Arrow}></Back>
       <Container>
         <PageTitle>Carrinho</PageTitle>
         <Item><img src="https://popvinyls.com/wp-content/uploads/2014/02/06blacksuitjoker.jpg" alt="FunkoPop"/>
