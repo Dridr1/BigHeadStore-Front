@@ -8,34 +8,43 @@ const Container = styled.div`
   align-items: center;
   align-self: ${(props) => props.alignSelf || 'initial'};
   padding: 0px 25px;
-  background-color: darkcyan;
+  background-color: #EB4629;
   min-height: 100vh;
   min-width: 100vw;
 `;
 
+const Title = styled.h1`
+  font-family: Sancreek;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 50px;
+  text-align: center;
+  color: #FFFFFF;
+
+  margin-bottom: 50px;
+`
+
 const Form = styled.form`
-  width: 380px;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   margin-bottom: 32px;
 `;
 
 const Input = styled.input`
   all: unset;
   box-sizing: border-box;
-  font-family: 'Raleway', sans-serif;
-  width: 90%;
+  width: 100%;
   color: #000;
   background: #FFFFFF;
   padding: 15px 16px;
-  border-radius: 5px;
+  border-radius: 15px;
 
   ::placeholder {
     color: #000;
-    font-family: 'Raleway', sans-serif;
   }
 `;
 
@@ -44,27 +53,24 @@ const Button = styled.button`
   box-sizing: border-box;
   cursor: pointer;
 
-  width: 90%;
+  width: 100%;
 
-  font-size: 20px;
-  font-style: normal;
+  font-family: Rubik;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 23px;
-  letter-spacing: 0em;
-
+  line-height: 30px;
   text-align: center;
-
+  color: #FFFFFF;
   padding: 12px;
-  
-  background: #A328D6;
-  border-radius: 5px;
+  background: #9C2D23;
+  border-radius: 15px;
+  margin-top: 20px;
 `;
 
 const StyledLink = styled(Link)`
   all: unset;
   box-sizing: border-box;
   cursor: pointer;
-
   color: #FFF;
   font-style: normal;
   font-weight: bold;
@@ -77,5 +83,6 @@ export {
   Form,
   Input,
   Button,
-  StyledLink
+  StyledLink,
+  Title
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
-import { Container, Form, Input, Button, StyledLink } from '../../components/FormComponents';
+import { Container, Form, Input, Button, StyledLink, Title } from '../../components/FormComponents';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router';
 
@@ -33,6 +33,7 @@ function SignIn() {
 
   return (
     <Container>
+      <Title> BigHeadStore </Title>
       <Form onSubmit={handleSubmit}>
         <Input
           placeholder="E-mail"

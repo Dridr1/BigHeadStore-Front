@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
                 vertical-align: baseline;
                 font-family: 'Ubuntu', sans-serif;
                 box-sizing: border-box;
-                overflow: scroll;
+        
                ::-webkit-scrollbar {
                         width: 8px;
                         }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
-import { Container, Form, Input, Button, StyledLink } from '../../components/FormComponents';
+import { Container, Form, Input, Button, StyledLink, Title } from '../../components/FormComponents';
 import { useNavigate } from 'react-router';
 
 function SignUp() {
@@ -38,6 +38,7 @@ function SignUp() {
 
   return (
     <Container>
+      <Title> BigHeadStore </Title>
       <Form onSubmit={handleSubmit}>
         <Input
           placeholder="Nome"
@@ -64,7 +65,7 @@ function SignUp() {
           required
         />
         <Input
-          placeholder="Confirme a senha"
+          placeholder="Repita sua senha"
           type="password"
           onChange={(e) => handleChange(e)}
           name="confirmPassword"
