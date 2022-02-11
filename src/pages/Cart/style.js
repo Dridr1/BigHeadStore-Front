@@ -89,10 +89,10 @@ const Button = styled.button`
   font-size: 20px;
   text-align: center;
   color: #FFFFFF; 
-  background: ${(props) => props.disabled ? '#E5E5E5':'#EB4629'};
+  background: #EB4629;
   border-radius: 20px;
   :hover{
-    ${(props) => !props.disabled && 'cursor: pointer'};
+    cursor: pointer;
   }
 `;
 

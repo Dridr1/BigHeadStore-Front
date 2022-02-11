@@ -30,7 +30,29 @@ const PageTitle = styled.p`
 const PurchaseInfo = styled.div`
   width: 100vw;
   padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  & p{
+    font-weight: bold;
+    font-size: 22px; 
+    margin-bottom: 60px; 
+    }
+  & div{
+    min-width: 320px;
+    display:flex;
+    justify-content: space-between;
+  }
 `;
+
+const Total = styled.div`
+  margin-top: 50px;
+  & span{
+    font-size: 20px;
+  }
+    `;
 
 const Button = styled.button`
   margin-top: 30px;
@@ -46,4 +68,4 @@ const Button = styled.button`
   }
 `;
 
-export { Container, Back, PageTitle, PurchaseInfo, Button};
+export { Container, Back, PageTitle, PurchaseInfo, Total, Button};
