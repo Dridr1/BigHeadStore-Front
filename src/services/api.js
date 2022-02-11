@@ -20,13 +20,13 @@ async function login(data) {
 }
 
 async function validateToken(token) {
-  const validation = await axios.get(`http://localhost:5000/users`,
+  const validation = await axios.get(`${BASE_URL}/users`,
       createConfig(token) );
   return validation;
 }
 
 async function checkout(token, purchase) {
-  const createPurchase = await axios.post(`http://localhost:5000/users/purchase`, purchase, createConfig(token))
+  const createPurchase = await axios.post(`${BASE_URL}/users/purchase`, purchase, createConfig(token))
   return createPurchase;
 }
 
