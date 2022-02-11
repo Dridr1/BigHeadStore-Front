@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
                 vertical-align: baseline;
                 font-family: 'Ubuntu', sans-serif;
                 box-sizing: border-box;
-                ::-webkit-scrollbar {
+               ::-webkit-scrollbar {
                         width: 8px;
                         }
                 ::-webkit-scrollbar-track { 
