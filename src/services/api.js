@@ -30,11 +30,17 @@ async function checkout(token, purchase) {
   return createPurchase;
 }
 
+async function getProduct(id) {
+  const item = await axios.post(`${BASE_URL}/products`, id);
+  return item;
+}
+
 const api = {
   createUser,
   login,
   validateToken,
-  checkout
+  checkout,
+  getProduct
 }
 
 export default api;
