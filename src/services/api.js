@@ -2,13 +2,13 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:5000';
 
-// function createConfig(token) {
-//   return {
-//     headers: {
-//       'Authorization': `Bearer ${token}`
-//     }
-//   }
-// }
+function createConfig(token) {
+  return {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }
+}
 
 async function createUser(user) {
   await axios.post(`${BASE_URL}/auth/sign-up`, user);
@@ -19,9 +19,22 @@ async function login(data) {
   return token;
 }
 
+async function validateToken(token) {
+  const validation = await axios.get(`${BASE_URL}/users`,
+      createConfig(token) );
+  return validation;
+}
+
+async function checkout(token, purchase) {
+  const createPurchase = await axios.post(`${BASE_URL}/users/purchase`, purchase, createConfig(token))
+  return createPurchase;
+}
+
 const api = {
   createUser,
-  login
+  login,
+  validateToken,
+  checkout
 }
 
 export default api;

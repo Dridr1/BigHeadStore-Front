@@ -1,33 +1,51 @@
-import { Container, Back, PageTitle, PurchaseInfo, Button } from './style.js'
+/* eslint-disable no-unused-vars */
+import { Container, Back, PageTitle, PurchaseInfo, Total, Button } from './style.js'
 import Arrow from '../../assets/back.png'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import useCart from '../../hooks/useCart';
-
+import useAuth from '../../hooks/useAuth';
+import api from '../../services/api';
 
 function Checkout() {
   const navigate = useNavigate();
   const { cart } = useCart();
-  let totalPrice = 0
+  const { auth } = useAuth();
+  let totalPrice = 0;
+  cart.map(({ price, quantity }) => totalPrice += parseFloat(price * quantity));
   
-  cart.map(({ price, quantity }) => totalPrice += parseFloat(price*quantity));
-  console.log(totalPrice)
+  const purchase = {products: cart, totalPrice}
 
-  function checkout() {
-    
+  async function checkout() {
+    try {
+      const res = await api.checkout(auth.token, purchase)   
+      if (res.status === 201) {
+        alert("Sua compra foi finalizada com sucesso!")
+        navigate('/')
+      } else {
+        alert("Ocorreu algum erro, tente novamente")
+      }
+    } catch(err) {
+      alert("Ocorreu algum erro, tente novamente")
+    }
   }
 
   return (
       <>
       <Back src={Arrow} onClick={()=> navigate(-1)}></Back>
       <Container>
-          <PageTitle>Carrinho</PageTitle>
+          <PageTitle>Checkout</PageTitle>
         <PurchaseInfo>
           <p>Detalhes do pedido:</p>
           {cart.map((item) => (
-            <div key={item._id}>{item.name} x {item.quantity} {`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</div>)
-          )}
-          <div><span>Total: </span>{`R$${parseFloat(totalPrice).toFixed(2).replace('.', ',')}`}</div>
+            <div>
+              <span key={item._id}>{item.name}  x  {item.quantity}</span>
+              <span>{`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</span>
+            </div>
+          ))}
+          <Total>
+            <span>Total: </span>
+            <span>{`R$${parseFloat(totalPrice).toFixed(2).replace('.', ',')}`}</span>
+          </Total>
           </PurchaseInfo>
         <Button onClick={()=>checkout()}>Finalizar compra</Button>
       </Container>
