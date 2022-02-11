@@ -25,58 +25,11 @@ const Container = styled.div`
 const PageTitle = styled.p`
   font-weight: bold;
   font-size: 22px;
-  margin-bottom: 5px;
 `;
   
-const Item = styled.div`
-  height: 200px;
-  width: 350px;
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 25px; 
-  background: #e5e5e5;
-  border-radius: 25px;
-  & img{
-    max-width: 112px;
-    max-height: 148px;
-    border-radius: 15px;
-  }
-  & p{
-    color: #000000;
-  }
-`;
-
-const ItemData = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-items: space-between;
-  align-items: flex-end;
-  gap: 40px;
-  padding-top: 30px;
-`;
-
-const ItemName = styled.p`
-  font-size: 20px;
-`;
-
-const Price = styled.p`
-  font-size: 18px;
-  margin-bottom: 10px
-`;
-
-const Remove = styled.div`
-  display:flex;
-  align-items: center;
-  justify-content: space-around;
-  color: #898989;
-  & button {
-  font-size: 14px;
-  :hover{
-    cursor: pointer;
-  }
-  }
+const PurchaseInfo = styled.div`
+  width: 100vw;
+  padding: 30px 20px;
 `;
 
 const Button = styled.button`
@@ -93,4 +46,4 @@ const Button = styled.button`
   }
 `;
 
-export { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Remove, Button};
+export { Container, Back, PageTitle, PurchaseInfo, Button};

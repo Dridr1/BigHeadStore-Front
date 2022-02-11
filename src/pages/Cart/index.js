@@ -1,19 +1,42 @@
 
-import { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Remove, Button } from './style.js'
+import { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button } from './style.js'
 import Arrow from '../../assets/back.png'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import useCart from '../../hooks/useCart';
+import { useState } from 'react';
 
 function Cart() {
+  const [rerender, setRerender] = useState(true);
   const navigate = useNavigate();
+  let disabled = true;
 
   const { fillCart } = useCart();
   const { cart } = useCart();
 
-  function removeFromCart(e) {
-    const cartUpdt = cart.filter((item) => item._id !== e.id);
+  function removeItem(e) {
+    const index = cart.findIndex((item) => item._id === e.id);
+    const item = cart.filter((item) => item._id === e.id)[0];
+    let cartUpdt;
+
+    if (parseInt(item.quantity) === 1) {
+      cartUpdt = cart.filter((item) => item._id !== e.id);
+    } else {
+      cartUpdt = cart
+      cartUpdt[index].quantity = parseInt(cart[index].quantity) - 1;
+    }
     fillCart(cartUpdt);
+    setRerender(!rerender);
+
+  }
+
+  function addItem(e) {
+    const index = cart.findIndex((item) => item._id === e.id);
+    let cartUpdt = cart;
+
+    cartUpdt[index].quantity = parseInt(cart[index].quantity) + 1;
+    fillCart(cartUpdt);
+    setRerender(!rerender);
   }
 
   function verifyLogin() {
@@ -22,18 +45,23 @@ function Cart() {
     );
     promise.then((answer) => {
       if (!answer.status || answer.status !== 200) {
-        alert("Para continuar faça o login")
+        alert("Para continuar faça seu login")
       } else {
         navigate('/checkout');
       }
     }) 
     promise.catch((err) => {
-      alert("Para continuar faça o login")
+      alert("Para continuar faça seu login")
+      navigate('/')
     })
   }
-
+  
   function printCart() {
-    if (!cart) { return "Seu carrinho está vazio" }
+    if (!cart || cart.length === 0) {
+      return "Seu carrinho está vazio"
+    }
+
+    disabled = false;
     
     return (
       cart.map((item) => (
@@ -41,9 +69,11 @@ function Cart() {
             <ItemData>
               <ItemName>{item.name}</ItemName>
               <Price>{`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</Price>
-              <Remove>
-                <button onClick={(e) => removeFromCart(e.target)} id={item._id}>Remover</button>
-              </Remove>
+              <Quantity>
+                <button onClick={(e) => removeItem(e.target)} id={item._id}> - </button>
+                <span>{item.quantity}</span>
+                <button onClick={(e) => addItem(e.target)} id={item._id}> + </button>
+              </Quantity>
             </ItemData>
           </Item>))
     )
@@ -55,7 +85,7 @@ function Cart() {
       <Container>
         <PageTitle>Carrinho</PageTitle>
           {printCart()}
-        <Button onClick={()=>verifyLogin()}>Ir para o checkout</Button>
+        <Button disabled={disabled} onClick={()=>verifyLogin()}>Ir para o checkout</Button>
       </Container>
     </>
   );

@@ -63,19 +63,22 @@ const ItemName = styled.p`
 
 const Price = styled.p`
   font-size: 18px;
-  margin-bottom: 10px
 `;
 
-const Remove = styled.div`
+const Quantity = styled.div`
   display:flex;
   align-items: center;
   justify-content: space-around;
   color: #898989;
+  font-size: 18px;
   & button {
-  font-size: 14px;
   :hover{
     cursor: pointer;
   }
+  }
+   & span{
+    color: #000000;
+    margin: 0 15px;    
   }
 `;
 
@@ -85,12 +88,12 @@ const Button = styled.button`
   height: 55px;
   font-size: 20px;
   text-align: center;
-  color: #FFFFFF;  
-  background: #EB4629;
+  color: #FFFFFF; 
+  background: ${(props) => props.disabled ? '#E5E5E5':'#EB4629'};
   border-radius: 20px;
   :hover{
-    cursor: pointer;
+    ${(props) => !props.disabled && 'cursor: pointer'};
   }
 `;
 
-export { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Remove, Button};
+export { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button};
