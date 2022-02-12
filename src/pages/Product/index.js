@@ -35,7 +35,7 @@ function Product() {
     <Container>
       <Image src={item.image} alt={item.name} />
       <Name>{item.name}</Name>
-      <Description>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates laborum sit commodi voluptatum molestiae. Omnis rem voluptatum deserunt mollitia similique maiores repellendus delectus ad doloremque iusto? Soluta officiis veniam laudantium!</Description>
+      <Description>{item.description}</Description>
       <Footer>
         <Price>{`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</Price>
         <Button onClick={(e)=> putOnCart(e.target)} id={item._id}>Adicionar ao carrinho</Button>
