@@ -22,6 +22,16 @@ const Name = styled.p`
   font-size: 20px;
 `;
 
+const Description = styled.p`
+width: 100vw;
+font-size: 11px;
+line-height: 13px;
+display: flex;
+align-items: center;
+color: #AFAFAF;
+padding: 0 30px;
+`;
+
 const Footer = styled.div`
   width: 330px;
   height: 45px;
@@ -31,6 +41,11 @@ const Footer = styled.div`
   background: #E5E5E5;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  @media(max-width: 335px){
+    width: 100vw;
+    border-radius: 0px;
+
+  }
 `;
 
 const Price = styled.p`
@@ -44,6 +59,7 @@ const Button = styled.button`
   display:flex;
   justify-content: center;
   align-items: center;
+  text-align:center;
   background: #E14327;
   border-radius: 5px;
   font-size: 10px;
@@ -51,6 +67,9 @@ const Button = styled.button`
   :hover{
     cursor: pointer;
   }
+    @media(max-width: 335px){
+    width: 33vw;
+  }
 `;
 
-export { Container, Image, Name, Footer, Price, Button };
+export { Container, Image, Name, Description, Footer, Price, Button };
