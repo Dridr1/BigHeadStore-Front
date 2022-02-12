@@ -7,12 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Product() {
   const { id } = useParams();
-  const [item, setItem] = useState({
-image: "https://www.techinn.com/f/13795/137954182/funko-pop-marvel-wandavision-wanda-70s.jpg"
-,name: "Wanda"
-,price: "500"
-,quantity: 1
-,_id: "15"});
+  const [item, setItem] = useState()
   const { cart, fillCart } = useCart();
   const navigate = useNavigate();
 
@@ -20,9 +15,9 @@ image: "https://www.techinn.com/f/13795/137954182/funko-pop-marvel-wandavision-w
         setItem(api.getProduct(id))
   }
 
- //useEffect(() => {
- //  loadPage();
- //}, [])
+  useEffect(() => {
+    loadPage();
+  }, [])
 
   function putOnCart(e) {
     const index = cart.findIndex((item) => item._id === e.id);
