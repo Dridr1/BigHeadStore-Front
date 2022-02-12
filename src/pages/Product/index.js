@@ -15,9 +15,9 @@ function Product() {
         setItem(api.getProduct(id))
   }
 
- useEffect(() => {
-   loadPage();
- }, [])
+  useEffect(() => {
+    loadPage();
+  }, [])
 
   function putOnCart(e) {
     const index = cart.findIndex((item) => item._id === e.id);
