@@ -7,20 +7,24 @@ import Product from './pages/Product';
 import { GlobalStyle } from './styles/style';
 import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
+import Home from './pages/Home/Index';
+import TopBar from './components/TopBar/Index';
 
 
 function App() {
-  return ( 
+  return (
     <AuthProvider>
-      <CartProvider>  
-      <GlobalStyle />
+      <CartProvider>
+        <GlobalStyle />
         <BrowserRouter>
+          <TopBar />
           <Routes>
-            <Route path="/" element={<SignIn />} />
+            <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/cart" element={ <Cart/> } />
-            <Route path="/checkout" element={<Checkout />}/>
-            <Route path="/product:id" element={<Product />}/>
+            <Route path='/' element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/product/:id" element={<Product />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>

@@ -31,7 +31,7 @@ function Product() {
     }
     fillCart(cartUpdt);
     navigate('/cart')
-}
+  }
 
   return (
     <>
