@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://bigheadstore.herokuapp.com';
+// const BASE_URL = 'https://bigheadstore.herokuapp.com';
+const BASE_URL = 'http://localhost:5000';
 
 function createConfig(token) {
   return {
@@ -31,8 +32,13 @@ async function checkout(token, purchase) {
 }
 
 async function getProduct(id) {
-  const item = await axios.post(`${BASE_URL}/products`, id);
+  const item = await axios.get(`${BASE_URL}/products/${id}`);
   return item;
+}
+
+async function getProducts() {
+  const items = await axios.get(`${BASE_URL}/products`);
+  return items;
 }
 
 const api = {
@@ -40,7 +46,8 @@ const api = {
   login,
   validateToken,
   checkout,
-  getProduct
+  getProduct,
+  getProducts
 }
 
 export default api;
