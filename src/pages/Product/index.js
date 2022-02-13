@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
-import { Container, Image, Name, Footer, Price, Button } from './style';
+import { Back, Container, Image, Name, Description, Footer, Price, Button } from './style';
 import { useParams } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import api from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import Arrow from '../../assets/back.png'
 
 function Product() {
   const { id } = useParams();
-  const [item, setItem] = useState({image: "", name: "", price: "132"});
+  const [item, setItem] = useState()
   const { cart, fillCart } = useCart();
   const navigate = useNavigate();
-  async function loadPage() {
-    const promise = api.getProduct(id);
-    promise.then(ans => {
-      setItem(ans.data);
-    }).catch(err => alert(err));
+
+  function loadPage() {
+        setItem(api.getProduct(id))
   }
 
   useEffect(() => {
     loadPage();
+    // eslint-disable-next-line
   }, [])
 
   function putOnCart(e) {
@@ -34,15 +34,18 @@ function Product() {
   }
 
   return (
-    <Container>
-      <Image src={item.image} alt={item.name} />
-      <Name>{item.name}</Name>
-      <Footer>
-        <Price>{`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</Price>
-        <Button onClick={(e) => putOnCart(e.target)} id={item._id}>Adicionar ao carrinho</Button>
-      </Footer>
-    </Container>
-
+    <>
+      <Back src={Arrow} onClick={()=> navigate(-1)}></Back>
+      <Container>
+        <Image src={item.image} alt={item.name} />
+        <Name>{item.name}</Name>
+        <Description>{item.description}</Description>
+        <Footer>
+          <Price>{`R$${item.price}`}</Price>
+          <Button onClick={(e)=> putOnCart(e.target)} id={item._id}>Adicionar ao carrinho</Button>
+        </Footer>
+      </Container>
+    </>
   );
 }
 
