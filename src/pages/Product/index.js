@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Container, Image, Name, Description, Footer, Price, Button } from './style';
+import { Back, Container, Image, Name, Description, Footer, Price, Button } from './style';
 import { useParams } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import api from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import Arrow from '../../assets/back.png'
 
 function Product() {
   const { id } = useParams();
@@ -32,16 +33,18 @@ function Product() {
 }
 
   return (
-    <Container>
-      <Image src={item.image} alt={item.name} />
-      <Name>{item.name}</Name>
-      <Description>{item.description}</Description>
-      <Footer>
-        <Price>{`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</Price>
-        <Button onClick={(e)=> putOnCart(e.target)} id={item._id}>Adicionar ao carrinho</Button>
-      </Footer>
-    </Container>
-
+    <>
+      <Back src={Arrow} onClick={()=> navigate(-1)}></Back>
+      <Container>
+        <Image src={item.image} alt={item.name} />
+        <Name>{item.name}</Name>
+        <Description>{item.description}</Description>
+        <Footer>
+          <Price>{`R$${item.price}`}</Price>
+          <Button onClick={(e)=> putOnCart(e.target)} id={item._id}>Adicionar ao carrinho</Button>
+        </Footer>
+      </Container>
+    </>
   );
 }
 
