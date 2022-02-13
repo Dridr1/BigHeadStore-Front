@@ -7,17 +7,19 @@ import { useNavigate } from 'react-router-dom';
 
 function Product() {
   const { id } = useParams();
-  const [item, setItem] = useState();
+  const [item, setItem] = useState({image: "", name: "", price: "132"});
   const { cart, fillCart } = useCart();
   const navigate = useNavigate();
-
   async function loadPage() {
-        setItem(api.getProduct(id))
+    const promise = api.getProduct(id);
+    promise.then(ans => {
+      setItem(ans.data);
+    }).catch(err => alert(err));
   }
 
- useEffect(() => {
-   loadPage();
- }, [])
+  useEffect(() => {
+    loadPage();
+  }, [])
 
   function putOnCart(e) {
     const index = cart.findIndex((item) => item._id === e.id);
@@ -29,7 +31,7 @@ function Product() {
     }
     fillCart(cartUpdt);
     navigate('/cart')
-}
+  }
 
   return (
     <Container>
@@ -37,7 +39,7 @@ function Product() {
       <Name>{item.name}</Name>
       <Footer>
         <Price>{`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</Price>
-        <Button onClick={(e)=> putOnCart(e.target)} id={item._id}>Adicionar ao carrinho</Button>
+        <Button onClick={(e) => putOnCart(e.target)} id={item._id}>Adicionar ao carrinho</Button>
       </Footer>
     </Container>
 
