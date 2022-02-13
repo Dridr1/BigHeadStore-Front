@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+const Back = styled.img`
+  width: 25px;
+  height: 20px;
+  position: fixed;
+  left: 20px;
+  top: 18px;
+  z-index: 10;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -72,4 +84,4 @@ const Button = styled.button`
   }
 `;
 
-export { Container, Image, Name, Description, Footer, Price, Button };
+export {Back, Container, Image, Name, Description, Footer, Price, Button };

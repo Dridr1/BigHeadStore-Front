@@ -61,7 +61,7 @@ function Cart() {
         <Item key={item._id}><img src={item.image} alt={item.name} />
           <ItemData>
             <ItemName>{item.name}</ItemName>
-            <Price>{`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</Price>
+            <Price>{`R$${item.price}`}</Price>
             <Quantity>
               <button onClick={(e) => removeItem(e.target)} id={item._id}> - </button>
               <span>{item.quantity}</span>

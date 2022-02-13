@@ -11,7 +11,7 @@ function Checkout() {
   const { cart } = useCart();
   const { auth } = useAuth();
   let totalPrice = 0;
-  cart.map(({ price, quantity }) => totalPrice += parseFloat(price * quantity));
+  cart.map(({ price, quantity }) => totalPrice += parseFloat(price.replace(',','.')) * parseFloat(quantity));
   
   const purchase = {products: cart, totalPrice}
 
@@ -37,14 +37,14 @@ function Checkout() {
         <PurchaseInfo>
           <p>Detalhes do pedido:</p>
           {cart.map((item) => (
-            <div>
-              <span key={item._id}>{item.name}  x  {item.quantity}</span>
-              <span>{`R$${parseFloat(item.price).toFixed(2).replace('.', ',')}`}</span>
+            <div key={item._id}>
+              <span>{item.name}  x  {item.quantity}</span>
+              <span>{item.price}</span>
             </div>
           ))}
           <Total>
             <span>Total: </span>
-            <span>{`R$${parseFloat(totalPrice).toFixed(2).replace('.', ',')}`}</span>
+            <span>{`R$${totalPrice.toFixed(2).replace('.', ',')}`}</span>
           </Total>
           </PurchaseInfo>
         <Button onClick={()=>checkout()}>Finalizar compra</Button>
