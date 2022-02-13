@@ -18,6 +18,7 @@ function Product() {
 
   useEffect(() => {
     loadPage();
+    // eslint-disable-next-line
   }, [])
 
   function putOnCart(e) {

@@ -24,7 +24,7 @@ function SignIn() {
     try {
       const { data } = await api.login(user);
       login(data);
-      navigation('/home');
+      navigation("/products");
     } catch (error) {
       console.log(error);
       alert("Erro, tente novamente");
