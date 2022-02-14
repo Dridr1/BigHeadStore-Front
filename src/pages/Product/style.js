@@ -40,6 +40,7 @@ font-size: 11px;
 line-height: 13px;
 display: flex;
 align-items: center;
+justify-content: center;
 color: #AFAFAF;
 padding: 0 30px;
 `;

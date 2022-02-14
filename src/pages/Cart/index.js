@@ -1,4 +1,4 @@
-import { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button } from './style.js'
+import { CartContainer, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button } from './style.js'
 import Arrow from '../../assets/back.png'
 import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
@@ -75,11 +75,11 @@ function Cart() {
   return (
     <>
       <Back src={Arrow} onClick={()=> navigate(-1)}></Back>
-      <Container>
+      <CartContainer>
         <PageTitle>Carrinho</PageTitle>
           <RenderCart/>
         <Button onClick={()=>verifyLogin()}>Ir para o checkout</Button>
-      </Container>
+      </CartContainer>
     </>
   );
 }

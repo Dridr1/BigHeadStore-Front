@@ -12,13 +12,12 @@ const Back = styled.img`
   }
 `;
 
-const Container = styled.div`
+const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 60px 15px;
-  margin-top: 35px;
+  padding: 100px 15px;
   gap: 30px;
 `;
 
@@ -96,4 +95,4 @@ const Button = styled.button`
   }
 `;
 
-export { Container, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button};
+export { CartContainer, Back, PageTitle, Item, ItemData, ItemName, Price, Quantity, Button};

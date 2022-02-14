@@ -26,12 +26,12 @@ export default function TopBar({setIsMenuOpen}) {
             <Button
                 isThereMenu={(pathname === '/cart' || pathname === '/checkout') ? false : true}
                 onClick={() => {
-                    (pathname === '/cart' || pathname === '/checout') ? goBack() : setIsMenuOpen(true)
+                    (pathname === '/cart' || pathname === '/checkout') ? goBack() : setIsMenuOpen(true)
                 }
                 }
             >
                 {
-                    (pathname === '/cart' || pathname === '/checout')
+                    (pathname === '/cart' || pathname === '/checkout')
                         ?
                         <img src={back} alt="voltar" />
                         :
