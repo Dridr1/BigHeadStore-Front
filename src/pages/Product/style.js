@@ -17,36 +17,39 @@ const Container = styled.div`
   height: 100vh;
   display:flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 100px 12px 30px 12px;
 `;
 
 const Image = styled.img`
-  max-width: 250px;
+  margin-top: 35px;
+  max-width: 300px;
   max-height: 310px;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
 `;
 
 const Name = styled.p`
+  margin-top: 40px;
   font-weight: bold;
   font-size: 20px;
 `;
 
 const Description = styled.p`
 width: 100vw;
-font-size: 11px;
+margin-top: 35px;
+font-size: 15px;
 line-height: 13px;
-display: flex;
-align-items: center;
 justify-content: center;
+text-align: center;
+display: flex;
 color: #AFAFAF;
 padding: 0 30px;
 `;
 
 const Footer = styled.div`
-  width: 330px;
+  margin-top: 80px;
+  min-width: 350px;
   height: 45px;
   display: flex;
   justify-content: space-around;
@@ -67,7 +70,7 @@ const Price = styled.p`
 `;
 
 const Button = styled.button`
-  width: 110px;
+  min-width: 150px;
   height: 30px;
   display:flex;
   justify-content: center;
@@ -75,7 +78,7 @@ const Button = styled.button`
   text-align:center;
   background: #E14327;
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 14px;
   color: #FFFFFF;
   :hover{
     cursor: pointer;

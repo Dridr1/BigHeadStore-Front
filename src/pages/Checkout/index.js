@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Container, Back, PageTitle, PurchaseInfo, Total, Button } from './style.js'
-import Arrow from '../../assets/back.png'
+import { Container, PageTitle, PurchaseInfo, Total, Button } from './style.js'
 import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useAuth from '../../hooks/useAuth';
@@ -32,7 +31,6 @@ function Checkout() {
 
   return (
       <>
-      <Back src={Arrow} onClick={()=> navigate(-1)}></Back>
       <Container>
           <PageTitle>Checkout</PageTitle>
         <PurchaseInfo>

@@ -18,13 +18,14 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 60px 15px;
-  margin-top: 35px;
+  margin-top: 0px;
   gap: 30px;
 `;
 
 const PageTitle = styled.p`
   font-weight: bold;
   font-size: 22px;
+  margin-top: 30px;
 `;
   
 const PurchaseInfo = styled.div`
