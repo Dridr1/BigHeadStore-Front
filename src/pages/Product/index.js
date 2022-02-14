@@ -7,13 +7,17 @@ import { useNavigate } from 'react-router-dom';
 import Arrow from '../../assets/back.png'
 
 function Product() {
-  const { id } = useParams();
-  const [item, setItem] = useState()
+  const {id} = useParams();
+  const [item, setItem] = useState({})
   const { cart, fillCart } = useCart();
   const navigate = useNavigate();
 
   function loadPage() {
-        setItem(api.getProduct(id))
+    const promise = api.getProduct(id);
+    promise.then((res) => {
+      setItem(res.data);
+    })
+    promise.catch((err=> console.log(err)))
   }
 
   useEffect(() => {
@@ -22,8 +26,9 @@ function Product() {
   }, [])
 
   function putOnCart(e) {
-    const index = cart.findIndex((item) => item._id === e.id);
-    const cartUpdt = cart
+    console.log(item, e, cart)
+    const index = (cart ? cart.findIndex((item) => item._id === e.id) : -1 );
+    const cartUpdt = (cart ? cart : []);
     if (index === -1) {
       cartUpdt.push({ ...item, quantity: 1 });
     } else {
@@ -33,16 +38,20 @@ function Product() {
     navigate('/cart')
   }
 
+  if (item === {}) {
+    return;
+  }
+
   return (
     <>
       <Back src={Arrow} onClick={()=> navigate(-1)}></Back>
       <Container>
-        <Image src={item.image} alt={item.name} />
-        <Name>{item.name}</Name>
-        <Description>{item.description}</Description>
+        <Image src={item?.image} alt={item?.name} />
+        <Name>{item?.name}</Name>
+        <Description>{item?.description}</Description>
         <Footer>
-          <Price>{`R$${item.price}`}</Price>
-          <Button onClick={(e)=> putOnCart(e.target)} id={item._id}>Adicionar ao carrinho</Button>
+          <Price>{`R$${item?.price}`}</Price>
+          <Button onClick={(e)=> putOnCart(e.target)} id={item?._id}>Adicionar ao carrinho</Button>
         </Footer>
       </Container>
     </>

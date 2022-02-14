@@ -29,7 +29,7 @@ function SignUp() {
 
     try {
       await api.createUser(user);
-      navigation('/');
+      navigation('/sign-in');
     } catch (error) {
       console.log(error);
       alert("Erro, tente novamente");
@@ -74,7 +74,7 @@ function SignUp() {
         />
         <Button type="submit">Cadastrar</Button>
       </Form>
-      <StyledLink to="/">Já tem uma conta? Entre agora!</StyledLink>
+      <StyledLink to="/sign-in">Já tem uma conta? Entre agora!</StyledLink>
     </Container>
   );
 }

@@ -8,7 +8,7 @@ import api from '../../services/api';
 
 function Checkout() {
   const navigate = useNavigate();
-  const { cart } = useCart();
+  const { cart, fillCart } = useCart();
   const { auth } = useAuth();
   let totalPrice = 0;
   cart.map(({ price, quantity }) => totalPrice += parseFloat(price.replace(',','.')) * parseFloat(quantity));
@@ -19,13 +19,14 @@ function Checkout() {
     try {
       const res = await api.checkout(auth.token, purchase)   
       if (res.status === 201) {
-        alert("Sua compra foi finalizada com sucesso!")
-        navigate('/')
+        alert("Sua compra foi finalizada com sucesso!");
+        fillCart([]);
+        navigate('/');
       } else {
-        alert("Ocorreu algum erro, tente novamente")
+        alert("Ocorreu algum erro, tente novamente");
       }
     } catch(err) {
-      alert("Ocorreu algum erro, tente novamente")
+      alert("Ocorreu algum erro, tente novamente");
     }
   }
 
