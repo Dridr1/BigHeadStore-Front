@@ -33,7 +33,7 @@ export default function TopBar({setIsMenuOpen}) {
                 {
                     (pathname === '/cart' || pathname === '/checkout')
                         ?
-                        <img src={back} alt="voltar" width={'25px'} height={'22px'} alignSelf={'center'}/>
+                        <img src={back} alt="voltar" width={'25px'} height={'22px'} />
                         :
                         <svg width="23" height="12" viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 1H22M1 6H22M1 11H22" stroke="white" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" />

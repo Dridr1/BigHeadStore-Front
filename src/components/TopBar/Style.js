@@ -25,5 +25,6 @@ export const Button = styled.button`
     width: 46px;
     height: 36px;
     border-radius: 15px;
+    cursor: pointer;
     ${props => props.isThereMenu ? 'right' : 'left'}: 15px; 
 `;

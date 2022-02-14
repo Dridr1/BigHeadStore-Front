@@ -7,7 +7,8 @@ export default function MenuComponent({ isMenuOpen, setIsMenuOpen }) {
   const navigate = useNavigate();
 
   const logout = () => {
-    localStorage.clear()
+    localStorage.clear();
+    setIsMenuOpen(false);
     navigate('/sign-in');
   }
 

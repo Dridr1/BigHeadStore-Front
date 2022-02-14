@@ -26,7 +26,6 @@ function Product() {
   }, [])
 
   function putOnCart(e) {
-    console.log(item, e, cart)
     const index = (cart ? cart.findIndex((item) => item._id === e.id) : -1 );
     const cartUpdt = (cart ? cart : []);
     if (index === -1) {

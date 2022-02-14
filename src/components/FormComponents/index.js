@@ -15,13 +15,20 @@ const Container = styled.div`
 
 const Title = styled.h1`
   font-family: Sancreek;
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 400;
   line-height: 50px;
   text-align: center;
   color: #FFFFFF;
-
+  cursor: pointer;
   margin-bottom: 50px;
+  transition-duration: 700ms;
+
+  :hover{
+    color: black;
+    font-size: 45px;
+    transition-duration: 600ms;
+  }
 `
 
 const Form = styled.form`
