@@ -10,11 +10,15 @@ export const Container = styled.div`
     align-items: center;
     background: #e5e5e5;
     padding: 10px;
+    text-align: center;
+    justify-content: space-between;
     h3{
-        font-size: 18px;
+        font-size: 1em;
     }
     img{
         width: 98px;
+        height: 98px;
+        object-fit: cover;
         border-radius: 12px;
     }
 `;
@@ -25,10 +29,10 @@ export const PriceTag = styled.div`
     width: 100%;
     span{
         color: black;
-        font-size: 12px;
+        font-size: 0.85em;
     }
     p{
         color: green;
-        font-size: 12px;
+        font-size: 0.85em;
     }
 `;
