@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
-import { Container, Form, Input, Button, StyledLink, Title } from '../../components/FormComponents';
+import { Container, Form, Input, Button, StyledLink, Title } from '../../components/FormComponents/index.js';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ function SignIn() {
     password: '',
   });
   const { login } = useAuth();
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   function handleChange({ target }) {
     setFormData({ ...formData, [target.name]: target.value });
@@ -24,16 +25,36 @@ function SignIn() {
     try {
       const { data } = await api.login(user);
       login(data);
-      navigation("/");
+      navigate("/");
     } catch (error) {
-      console.log(error);
-      alert("Erro, tente novamente");
+      let errorMessage = (String(error));
+      console.log(errorMessage)
+        if(errorMessage.includes(422)){
+          return Swal.fire({
+            icon: 'error',
+            title: 'Ops...',
+            text: 'O e-mail e a senha devem ter no mín 3 caracteres e o e-mail deve ser válido!',
+          })
+        } else if(errorMessage.includes(404)){
+          return Swal.fire({
+            icon: 'error',
+            title: 'Ops...',
+            text: 'O usuário não foi encontrado!',
+          })
+        }else if(errorMessage.includes(401)){
+          return Swal.fire({
+            icon: 'error',
+            title: 'Ops...',
+            text: 'E-mail ou senha incorretos!',
+          })
+        }
+        ;
     }
   }
 
   return (
     <Container>
-      <Title> BigHeadStore </Title>
+      <Title onClick={() => navigate('/')}> BigHeadStore </Title>
       <Form onSubmit={handleSubmit}>
         <Input
           placeholder="E-mail"

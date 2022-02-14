@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: ${props => props.hidden ? 'hidden' : 'flex'}};
+    display: ${props => props.hidden ? 'hidden' : 'flex'};
     justify-content: center;
     align-items: center;
     background: #EB4629;
@@ -21,9 +21,10 @@ export const Button = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: red;
+    background: #EB4629;
     width: 46px;
     height: 36px;
     border-radius: 15px;
+    cursor: pointer;
     ${props => props.isThereMenu ? 'right' : 'left'}: 15px; 
 `;

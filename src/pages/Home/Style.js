@@ -9,7 +9,8 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-    font-wrigth: bold;
+    margin-top: 30px;
+    font-weight: bold;
     font-size: 22px;
 `;
 

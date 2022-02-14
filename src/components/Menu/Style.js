@@ -8,14 +8,17 @@ export const StyledMenu = styled(Menu)`
     flex-direction: column;
     align-items: center;
     padding: 60px 18px;
+    
+    
     h3{
         font-size: 1.25em;
         text-align: center;
+        
     }
     span{
         color: #EB4629;
         font-size: 1.1em;
-        margin-top:16px;
+        margin-top:16px;      
     }
 `;
 

@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { Container, Back, PageTitle, PurchaseInfo, Total, Button } from './style.js'
-import Arrow from '../../assets/back.png'
+import { Container, PageTitle, PurchaseInfo, Total, Button } from './style.js'
 import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useAuth from '../../hooks/useAuth';
 import api from '../../services/api';
+import Swal from 'sweetalert2';
 
 function Checkout() {
   const navigate = useNavigate();
   const { cart, fillCart } = useCart();
   const { auth } = useAuth();
   let totalPrice = 0;
-  cart.map(({ price, quantity }) => totalPrice += parseFloat(price.replace(',','.')) * parseFloat(quantity));
+  cart?.map(({ price, quantity }) => totalPrice += parseFloat(price.replace(',','.')) * parseFloat(quantity));
   
   const purchase = {products: cart, totalPrice}
 
@@ -19,28 +19,39 @@ function Checkout() {
     try {
       const res = await api.checkout(auth.token, purchase)   
       if (res.status === 201) {
-        alert("Sua compra foi finalizada com sucesso!");
+        Swal.fire({
+          icon:'success',
+          title: 'Sucesso!',
+          text: 'Sua compra foi finalizada com sucesso!'
+        })
         fillCart([]);
         navigate('/');
       } else {
-        alert("Ocorreu algum erro, tente novamente");
+        return Swal.fire({
+          icon: 'error',
+          title: 'Ops...',
+          text: 'Faça seu login para continuar!'
+        })
       }
     } catch(err) {
-      alert("Ocorreu algum erro, tente novamente");
+      return Swal.fire({
+        icon: 'error',
+        title: 'Ops...',
+        text: 'Ocorreu algum erro, tente novamente'
+      })
     }
   }
 
   return (
-      <>
-      <Back src={Arrow} onClick={()=> navigate(-1)}></Back>
+      
       <Container>
           <PageTitle>Checkout</PageTitle>
         <PurchaseInfo>
           <p>Detalhes do pedido:</p>
-          {cart.map((item) => (
-            <div key={item._id}>
-              <span>{item.name}  x  {item.quantity}</span>
-              <span>{item.price}</span>
+          {cart?.map((item) => (
+            <div key={item?._id}>
+              <span>{item?.name}  x  {item?.quantity}</span>
+              <span>{item?.price}</span>
             </div>
           ))}
           <Total>
@@ -50,7 +61,7 @@ function Checkout() {
           </PurchaseInfo>
         <Button onClick={()=>checkout()}>Finalizar compra</Button>
       </Container>
-    </>
+    
   );
 }
 

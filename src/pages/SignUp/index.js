@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
-import { Container, Form, Input, Button, StyledLink, Title } from '../../components/FormComponents';
+import { Container, Form, Input, Button, StyledLink, Title } from '../../components/FormComponents/index.js';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ function SignUp() {
     password: '',
     confirmPassword: ''
   });
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   function handleChange({ target }) {
     setFormData({ ...formData, [target.name]: target.value });
@@ -20,8 +21,11 @@ function SignUp() {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("As senhas devem ser iguais");
-      return;
+      return Swal.fire({
+        icon: 'error',
+        title: 'Ops...',
+        text: 'As senhas não coincidem!'
+    })
     }
 
     const user = { ...formData };
@@ -29,16 +33,33 @@ function SignUp() {
 
     try {
       await api.createUser(user);
-      navigation('/sign-in');
+      Swal.fire({
+        icon:'success',
+        title: 'Sucesso!',
+        text: 'O usuário foi cadastrado'
+      })
+      navigate('/sign-in');
     } catch (error) {
-      console.log(error);
-      alert("Erro, tente novamente");
+      let errorMessage = (String(error));
+        if(errorMessage.includes(422)){
+          return Swal.fire({
+            icon: 'error',
+            title: 'Ops...',
+            text: 'O usuário e a senha devem ter no mín 3 caracteres e o e-mail deve ser válido!',
+          })
+        } else if(errorMessage.includes(400)){
+          return Swal.fire({
+            icon: 'error',
+            title: 'Ops...',
+            text: 'O usuário já existe!',
+          })
+        }
     }
   }
 
   return (
     <Container>
-      <Title> BigHeadStore </Title>
+      <Title onClick={() => navigate('/')}> BigHeadStore </Title>
       <Form onSubmit={handleSubmit}>
         <Input
           placeholder="Nome"
