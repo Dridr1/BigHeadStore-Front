@@ -9,15 +9,19 @@ import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
 import Home from './pages/Home/Index';
 import TopBar from './components/TopBar/Index';
+import MenuComponent from './components/Menu/Index';
+import { useState } from 'react';
 
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <AuthProvider>
       <CartProvider>
         <GlobalStyle />
         <BrowserRouter>
-          <TopBar />
+          <TopBar setIsMenuOpen={setIsMenuOpen}/>
+          <MenuComponent isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
           <Routes>
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
