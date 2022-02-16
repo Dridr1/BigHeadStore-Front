@@ -26,7 +26,7 @@ export default function Home() {
     <Container>
       <MarketCartContainer>
         <img src={cartImg} onClick={() => navigate('/cart')} alt='cart'/>
-        <span onClick={() => navigate('/cart')}> {cart.length} </span>
+        <span onClick={() => navigate('/cart')}> {cart?.length} </span>
       </MarketCartContainer>
       <Title>Selecione seus produtos</Title>
       <Products>
