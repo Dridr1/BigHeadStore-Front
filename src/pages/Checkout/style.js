@@ -26,6 +26,9 @@ const PageTitle = styled.p`
   font-weight: bold;
   font-size: 22px;
   margin-top: 30px;
+  font-family: Sancreek;
+  font-weight: 100;
+  letter-spacing: 1.5px;
 `;
   
 const PurchaseInfo = styled.div`

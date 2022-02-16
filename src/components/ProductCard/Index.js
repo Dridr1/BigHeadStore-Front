@@ -17,7 +17,6 @@ export default function ProductCard({ image, name, price, id }) {
                 <span>PREÇO:</span>
                 <p>R$ {price}</p>
             </PriceTag>
-
         </Container>
     );
 }
