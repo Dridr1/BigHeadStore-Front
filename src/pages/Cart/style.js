@@ -25,20 +25,25 @@ const PageTitle = styled.p`
   font-weight: bold;
   font-size: 22px;
   margin-bottom: 5px;
+  font-family: Sancreek;
+  font-weight: 100;
+  letter-spacing: 1.5px;
 `;
   
 const Item = styled.div`
-  height: 200px;
+  height: auto;
   width: 350px;
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 0 25px; 
+  padding: 15px 25px; 
   background: #e5e5e5;
   border-radius: 25px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 8px gray;
   & img{
-    max-width: 112px;
-    max-height: 148px;
+    width: 8em;
+    height: auto;
     border-radius: 15px;
   }
   & p{
@@ -50,14 +55,15 @@ const ItemData = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-items: space-between;
-  align-items: flex-end;
-  gap: 40px;
-  padding-top: 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  box-sizing: border-box;  
 `;
 
 const ItemName = styled.p`
-  font-size: 20px;
+  font-size: 18px;
+  text-align: center;
 `;
 
 const Price = styled.p`

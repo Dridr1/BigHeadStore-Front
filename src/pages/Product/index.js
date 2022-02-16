@@ -12,6 +12,12 @@ function Product() {
   const { cart, fillCart } = useCart();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    loadPage();
+    // eslint-disable-next-line
+  }, [])
+
+
   function loadPage() {
     const promise = api.getProduct(id);
     promise.then((res) => {
@@ -19,11 +25,6 @@ function Product() {
     })
     promise.catch((err=> console.log(err)))
   }
-
-  useEffect(() => {
-    loadPage();
-    // eslint-disable-next-line
-  }, [])
 
   function putOnCart(e) {
     const index = (cart ? cart.findIndex((item) => item._id === e.id) : -1 );
@@ -37,16 +38,12 @@ function Product() {
     navigate('/cart')
   }
 
-  if (item === {}) {
-    return;
-  }
-
   return (
     <>
       <Back src={Arrow} onClick={()=> navigate(-1)}></Back>
       <Container>
         <Image src={item?.image} alt={item?.name} />
-        <Name>{item?.name}</Name>
+          <Name>{item?.name}</Name>
         <Description>{item?.description}</Description>
         <Footer>
           <Price>{`R$${item?.price}`}</Price>

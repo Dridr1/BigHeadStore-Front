@@ -23,11 +23,19 @@ const Title = styled.h1`
   cursor: pointer;
   margin-bottom: 50px;
   transition-duration: 700ms;
+  -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  user-select: none; 
 
   :hover{
     color: black;
     font-size: 45px;
     transition-duration: 600ms;
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none; 
   }
 `
 
@@ -59,9 +67,7 @@ const Button = styled.button`
   all: unset;
   box-sizing: border-box;
   cursor: pointer;
-
   width: 100%;
-
   font-family: Rubik;
   font-size: 24px;
   font-weight: 700;
@@ -72,6 +78,12 @@ const Button = styled.button`
   background: #9C2D23;
   border-radius: 15px;
   margin-top: 20px;
+  transition-duration: 600ms;
+    
+    :hover{
+      transition-duration: 600ms;
+      transform: scale(1.05); 
+    }
 `;
 
 const StyledLink = styled(Link)`

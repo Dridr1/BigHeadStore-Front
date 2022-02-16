@@ -8,6 +8,7 @@ export const Container = styled.div`
     height: 59px;
     width: 100%;
     position: fixed;
+    z-index: 99;
     h1{
         font-family: Sancreek;
         font-size: 24px;
